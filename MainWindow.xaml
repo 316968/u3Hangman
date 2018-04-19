@@ -1,0 +1,28 @@
+<Window x:Class="u3Hangman.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:u3Hangman"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525" MaxHeight="400" MaxWidth="575">
+    <StackPanel>
+        <TextBox x:Name="txtInput" Text="Input"/>
+        <Button x:Name="btnProcess" Content="Guess"  Click="btnProcess_Click"/>
+        <TextBlock x:Name="lblLetters"  Text="Letters Remaining: a b c d e f g h i j k l m n o p q r s t u v w x y z"/>
+        <StackPanel>
+            <Label x:Name="lblWord" Content=""/>
+        </StackPanel>
+        <Canvas x:Name="hangman" Height="212" Margin="0,0,251,0">
+            <Ellipse x:Name="head" Stroke="Black"  Height="71" Width="71" Canvas.Left="100" Visibility="Hidden"/>
+            <Line x:Name="torso" Stroke="Black" StrokeThickness="2" X1="135" X2="135" Y1="70" Y2="170" Visibility="Hidden"/>
+            <Line x:Name="leftArm" Stroke="Black" StrokeThickness="2" X1="135" X2="70" Y1="90" Y2="120" Visibility="Hidden"/>
+            <Line x:Name="rightArm" Stroke="Black" StrokeThickness="2" X1="135" X2="200" Y1="90" Y2="120" Visibility="Hidden"/>
+            <Line x:Name="leftLeg" Stroke="Black" StrokeThickness="2" X1="135" X2="70" Y1="170" Y2="210" Visibility="Hidden"/>
+            <Line x:Name="rightLeg" Stroke="Black" StrokeThickness="2" X1="135" X2="200" Y1="170" Y2="210" Visibility="Hidden"/>
+        </Canvas>
+        <TextBox x:Name="txtGuessAnswer" Text="Guess the answer!" Margin="271,0,0,0" Height="19"/>
+        <Label x:Name="lblAnswerTitle" Content="" Margin="0,0,246,0"/>
+    </StackPanel>
+
+</Window>
