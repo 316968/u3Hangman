@@ -1,3 +1,10 @@
+//Quinn Parker-Joyes
+//April 23 2018
+//Hangman Game
+//User presses button to guess a word. To win, they must enter the correct word into the textbox.
+
+
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,72 +26,74 @@ namespace HangmanGrid
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {
+    {   // the string word is the random word selected
         string word = "";
         int counter = 0;
+        // int timeswrong goes up when a guess is wrong
         int timeswrong = 0;
+        // int timesright goes up when a guess is right. 
+        int timesright = 0;
         int length;
         public MainWindow()
         {
             InitializeComponent();
-            System.IO.StreamReader streamReader = new System.IO.StreamReader("C:/Users/Quinn!/Documents/Hangman.txt");
+            System.IO.StreamReader streamReader = new System.IO.StreamReader("H:/hangman.txt");
             Random random = new Random();
             int rando = random.Next(0, 10);
             while (counter <= rando)
-            {
+            {   // selects random word
                 word = streamReader.ReadLine();
                 counter++;
-                
+
             }
 
-         
-                length = Convert.ToInt32(word.Length);
-           
-            
+            // finds length of word
+            length = Convert.ToInt32(word.Length);
+
+            //creates underscores for the length of word
             for (int i = 0; i <= length; i++)
             {
                 lblWord.Content = lblWord.Content + "_ ";
             }
-            
+
         }
+        //method for the right or wrong system
         public void lblReplace(string x)
+        {
+            if (word.Contains(x))
             {
-                if (word.Contains(x))
+                for (int i = 0; i < length; i++)
                 {
-                    for (int i = 0; i < length; i++)
+                    if (word[i] == x[0])
                     {
-                        if (word[i] == x[0])
-                        {
-                            string underscore = lblWord.Content.ToString().Remove(i * 2 + 2, 1);
-                            underscore = underscore.Insert((i + 1) * 2, x);
-                            lblWord.Content = underscore;
-                            string words = lblWord.Content.ToString();
-                            
-                           
-                            
-                        }                        
+                        string underscore = lblWord.Content.ToString().Remove(i * 2 + 2, 1);
+                        underscore = underscore.Insert((i + 1) * 2, x);
+                        lblWord.Content = underscore;
+                        timesright++;
+
                     }
                 }
-                else
-                {
+            }
+            else
+            {   // body becomes visible as the wrong answers happen. game ends when timeswrong is 7, so the whole body is visible before the game is lost
                 timeswrong++;
                 if (timeswrong == 1)
                 {
                     head.Visibility = Visibility.Visible;
-                    
+
                 }
                 if (timeswrong == 2)
                 {
                     head.Visibility = Visibility.Visible;
                     torso.Visibility = Visibility.Visible;
-                        
+
                 }
                 if (timeswrong == 3)
                 {
                     head.Visibility = Visibility.Visible;
                     torso.Visibility = Visibility.Visible;
                     leftArm.Visibility = Visibility.Visible;
-                            
+
                 }
                 if (timeswrong == 4)
                 {
@@ -92,7 +101,7 @@ namespace HangmanGrid
                     torso.Visibility = Visibility.Visible;
                     leftArm.Visibility = Visibility.Visible;
                     rightArm.Visibility = Visibility.Visible;
-                                
+
                 }
                 if (timeswrong == 5)
                 {
@@ -101,26 +110,31 @@ namespace HangmanGrid
                     leftArm.Visibility = Visibility.Visible;
                     rightArm.Visibility = Visibility.Visible;
                     leftLeg.Visibility = Visibility.Visible;
-                                    
+
                 }
                 if (timeswrong == 6)
-                 {
+                {
                     head.Visibility = Visibility.Visible;
                     torso.Visibility = Visibility.Visible;
                     leftArm.Visibility = Visibility.Visible;
                     rightArm.Visibility = Visibility.Visible;
                     leftLeg.Visibility = Visibility.Visible;
                     rightLeg.Visibility = Visibility.Visible;
-                                        
+
                 }
                 if (timeswrong == 7)
                 {
                     MessageBox.Show("You lose!");
                     Environment.Exit(0);
                 }
-                }
+            }
+            if(timesright == length)
+            {
+                MessageBox.Show("You win!");
+                Environment.Exit(0);
+            }
         }
-    
+
         private void btnA_Click(object sender, RoutedEventArgs e)
         {
             btnA.Visibility = Visibility.Hidden;
@@ -276,12 +290,17 @@ namespace HangmanGrid
             btnZ.Visibility = Visibility.Hidden;
             lblReplace("z");
         }
-
+        //user can enter the answer here to end the game.
         private void btnGuessFinal_Click(object sender, RoutedEventArgs e)
         {
-            if(guessFinal.Text == word)
+            if (guessFinal.Text == word)
             {
                 MessageBox.Show("You Won!");
+                Environment.Exit(0);
+            }
+            else
+            {
+                MessageBox.Show("You Lose!");
                 Environment.Exit(0);
             }
         }
