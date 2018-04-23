@@ -1,28 +1,48 @@
-<Window x:Class="u3Hangman.MainWindow"
+<Window x:Class="HangmanGrid.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:u3Hangman"
+        xmlns:local="clr-namespace:HangmanGrid"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" MaxHeight="400" MaxWidth="575">
-    <StackPanel>
-        <TextBox x:Name="txtInput" Text="Input"/>
-        <Button x:Name="btnProcess" Content="Guess"  Click="btnProcess_Click"/>
-        <TextBlock x:Name="lblLetters"  Text="Letters Remaining: a b c d e f g h i j k l m n o p q r s t u v w x y z"/>
-        <StackPanel>
-            <Label x:Name="lblWord" Content=""/>
-        </StackPanel>
-        <Canvas x:Name="hangman" Height="212" Margin="0,0,251,0">
-            <Ellipse x:Name="head" Stroke="Black"  Height="71" Width="71" Canvas.Left="100" Visibility="Hidden"/>
-            <Line x:Name="torso" Stroke="Black" StrokeThickness="2" X1="135" X2="135" Y1="70" Y2="170" Visibility="Hidden"/>
-            <Line x:Name="leftArm" Stroke="Black" StrokeThickness="2" X1="135" X2="70" Y1="90" Y2="120" Visibility="Hidden"/>
-            <Line x:Name="rightArm" Stroke="Black" StrokeThickness="2" X1="135" X2="200" Y1="90" Y2="120" Visibility="Hidden"/>
-            <Line x:Name="leftLeg" Stroke="Black" StrokeThickness="2" X1="135" X2="70" Y1="170" Y2="210" Visibility="Hidden"/>
-            <Line x:Name="rightLeg" Stroke="Black" StrokeThickness="2" X1="135" X2="200" Y1="170" Y2="210" Visibility="Hidden"/>
+        Title="MainWindow" Height="350" Width="525" MaxHeight="350" MaxWidth="525">
+    <Grid>
+        <TextBox x:Name="guessFinal" Text="Guess the answer!" Margin="180,33,0.4,263.8"/>
+        <Button x:Name="btnGuessFinal" Content="Guess" Click="btnGuessFinal_Click" Margin="180,62,163.4,215.8"/>
+        <Canvas x:Name="hangmanLocation" Margin="0,0,343.4,150.8">
+            <Ellipse x:Name="head" Stroke="Black" Height="55" Width="55" Canvas.Left="58" Visibility="Hidden"/>
+            <Line x:Name="torso" Stroke="Black" StrokeThickness="1" X1="85" X2="85" Y1="55" Y2="120" Visibility="Hidden"/>
+            <Line x:Name="leftArm" Stroke="Black" StrokeThickness="1" X1="85" X2="35" Y1="70" Y2="100" Visibility="Hidden"/>
+            <Line x:Name="rightArm" Stroke="Black" StrokeThickness="1" X1="85" X2="135" Y1="70" Y2="100" Visibility="Hidden"/>
+            <Line x:Name="leftLeg" Stroke="Black" StrokeThickness="1" X1="85" X2="35" Y1="120" Y2="155" Visibility="Hidden"/>
+            <Line x:Name="rightLeg" Stroke="Black" StrokeThickness="1" X1="85" X2="135" Y1="120" Y2="155" Visibility="Hidden"/>
         </Canvas>
-        <TextBox x:Name="txtGuessAnswer" Text="Guess the answer!" Margin="271,0,0,0" Height="19"/>
-        <Label x:Name="lblAnswerTitle" Content="" Margin="0,0,246,0"/>
-    </StackPanel>
-
+        <Label x:Name="lblWord" Content="" Margin="180,115,10.4,145.8"/>
+        <Button x:Name="btnA" Content="A" Click="btnA_Click" Margin="18,175,460.4,105.8"/>
+        <Button x:Name="btnB" Content="B" Click="btnB_Click" Margin="63,175,415.4,105.8"/>
+        <Button x:Name="btnC" Content="C" Click="btnC_Click" Margin="108,175,370.4,105.8"/>
+        <Button x:Name="btnD" Content="D" Click="btnD_Click" Margin="153,175,325.4,105.8"/>
+        <Button x:Name="btnE" Content="E" Click="btnE_Click" Margin="198,175,280.4,105.8"/>
+        <Button x:Name="btnF" Content="F" Click="btnF_Click" Margin="243,175,235.4,105.8"/>
+        <Button x:Name="btnG" Content="G" Click="btnG_Click" Margin="288,175,190.4,105.8"/>
+        <Button x:Name="btnH" Content="H" Click="btnH_Click" Margin="333,175,145.4,105.8"/>
+        <Button x:Name="btnI" Content="I" Click="btnI_Click" Margin="378,175,100.4,105.8"/>
+        <Button x:Name="btnJ" Content="J" Click="btnJ_Click" Margin="423,175,55.4,105.8"/>
+        <Button x:Name="btnK" Content="K" Click="btnK_Click" Margin="468,175,10.4,105.8"/>
+        <Button x:Name="btnL" Content="L" Click="btnL_Click" Margin="18,220,460.4,60.8"/>
+        <Button x:Name="btnM" Content="M" Click="btnM_Click" Margin="63,220,415.4,60.8"/>
+        <Button x:Name="btnN" Content="N" Click="btnN_Click" Margin="108,220,370.4,60.8"/>
+        <Button x:Name="btnO" Content="O" Click="btnO_Click" Margin="153,220,325.4,60.8"/>
+        <Button x:Name="btnP" Content="P" Click="btnP_Click" Margin="198,220,280.4,60.8"/>
+        <Button x:Name="btnQ" Content="Q" Click="btnQ_Click" Margin="243,220,235.4,60.8"/>
+        <Button x:Name="btnR" Content="R" Click="btnR_Click" Margin="288,220,190.4,60.8"/>
+        <Button x:Name="btnS" Content="S" Click="btnS_Click" Margin="333,220,145.4,60.8"/>
+        <Button x:Name="btnT" Content="T" Click="btnT_Click" Margin="378,220,100.4,60.8"/>
+        <Button x:Name="btnU" Content="U" Click="btnU_Click" Margin="423,220,55.4,60.8"/>
+        <Button x:Name="btnV" Content="V" Click="btnV_Click" Margin="468,220,10.4,60.8"/>
+        <Button x:Name="btnW" Content="W" Click="btnW_Click" Margin="18,265,460.4,15.8"/>
+        <Button x:Name="btnX" Content="X" Click="btnX_Click" Margin="63,265,415.4,15.8"/>
+        <Button x:Name="btnY" Content="Y" Click="btnY_Click" Margin="108,265,370.4,15.8"/>
+        <Button x:Name="btnZ" Content="Z" Click="btnZ_Click" Margin="153,265,325.4,15.8"/>
+    </Grid>
 </Window>
